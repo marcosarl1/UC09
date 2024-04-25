@@ -20,11 +20,11 @@ public class SaleController {
                 Sale sale = new Sale(price);
                 String discountInput = JOptionPane.showInputDialog(null, "Insira a porcentagem de desconto.",
                         "Solicitar desconto", JOptionPane.DEFAULT_OPTION);
-                if (discountInput == null) {
+                if (discountInput == null) { // Caso usuário feche popup de requisição de porcentagem, voltar para tela inicial
                     return;
                 }
                 double discount = Double.parseDouble(discountInput);
-                sale.requestDiscount(discount);
+                sale.requestDiscount(discount); // Chamando método da lógica de desconto da classe Sale
                 JOptionPane.showMessageDialog(null,
                         String.format("Preço original: R$%.2f %nPreço com desconto: R$%.2f", price, sale.getPrice()),
                         "Detalhes da venda", JOptionPane.INFORMATION_MESSAGE);
@@ -33,15 +33,16 @@ public class SaleController {
                         String.format("Preço total: R$%.2f", price),
                         "Detalhes da venda", JOptionPane.INFORMATION_MESSAGE);
             }
-        } catch (NumberFormatException e) {
+        } catch (NumberFormatException e) { // Erro para campo vazio ou com input diferente de formato com ponto flutante (divisor ".")
             if (saleCalculator.valueField.getText().isEmpty()) {
                 JOptionPane.showMessageDialog(null, "Insira o valor da venda!", "Erro", JOptionPane.ERROR_MESSAGE);
             } else {
                 JOptionPane.showMessageDialog(null, "Insira um número válido!", "Erro", JOptionPane.ERROR_MESSAGE);
             }
-            saleCalculator.valueField.setText("");
-        } catch (IllegalArgumentException e) {
+        } catch (IllegalArgumentException e) { // Erro para lidar com valores negativos e porcentagem menor que zero ou maior que cem
             JOptionPane.showMessageDialog(null, e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+        } catch (RuntimeException e){ // Erros inesperados em tempo de execução
+            JOptionPane.showMessageDialog(null, "Erro inesperado! Tente novamente", "Erro", JOptionPane.ERROR_MESSAGE);
         }
     }
 }
