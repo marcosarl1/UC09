@@ -12,7 +12,7 @@ public class Main extends JFrame{
     }
     
     private void init(){
-        //Configurações no Frame.
+        //Configurações do Frame.
         setTitle("Atividade01");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setSize(360,300);
