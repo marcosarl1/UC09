@@ -3,6 +3,7 @@ package application;
 import com.formdev.flatlaf.themes.FlatMacLightLaf;
 import java.awt.EventQueue;
 import javax.swing.JFrame;
+
 import view.SaleCalculator;
 
 public class Main extends JFrame{
