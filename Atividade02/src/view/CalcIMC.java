@@ -1,6 +1,11 @@
 package view;
 
-public class CalcIMC extends javax.swing.JFrame {
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+
+import controller.ControllerIMC;
+
+public class CalcIMC extends javax.swing.JFrame implements ErrorDisplayable{
 
     public CalcIMC() {
         initComponents();
@@ -16,9 +21,10 @@ public class CalcIMC extends javax.swing.JFrame {
         inputPanel = new javax.swing.JPanel();
         lblAltura = new javax.swing.JLabel();
         lblPeso = new javax.swing.JLabel();
-        tfAltura = new javax.swing.JTextField();
-        tfPeso = new javax.swing.JTextField();
+        tfHeight = new javax.swing.JTextField();
+        tfWeight = new javax.swing.JTextField();
         bttnCalc = new javax.swing.JButton();
+        bttnLimpar = new javax.swing.JButton();
         resultPanel = new javax.swing.JPanel();
         lblResultado = new javax.swing.JLabel();
         lblInterpretacao = new javax.swing.JLabel();
@@ -43,11 +49,34 @@ public class CalcIMC extends javax.swing.JFrame {
         lblPeso.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
         lblPeso.setText("Peso (kg):");
 
-        bttnCalc.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
+        tfHeight.setToolTipText("Insira a altura");
+        tfHeight.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfHeightActionPerformed(evt);
+            }
+        });
+
+        tfWeight.setToolTipText("Insira o peso");
+        tfWeight.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfWeightActionPerformed(evt);
+            }
+        });
+
+        bttnCalc.setBackground(new java.awt.Color(0, 122, 255));
+        bttnCalc.setFont(new java.awt.Font("Inter", 1, 12)); // NOI18N
+        bttnCalc.setForeground(new java.awt.Color(255, 255, 255));
         bttnCalc.setText("Calcular");
         bttnCalc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bttnCalcActionPerformed(evt);
+            }
+        });
+
+        bttnLimpar.setText("Limpar");
+        bttnLimpar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bttnLimparActionPerformed(evt);
             }
         });
 
@@ -58,15 +87,18 @@ public class CalcIMC extends javax.swing.JFrame {
             .addGroup(inputPanelLayout.createSequentialGroup()
                 .addGap(15, 15, 15)
                 .addGroup(inputPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(bttnCalc)
+                    .addGroup(inputPanelLayout.createSequentialGroup()
+                        .addComponent(bttnLimpar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(bttnCalc))
                     .addGroup(inputPanelLayout.createSequentialGroup()
                         .addGroup(inputPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblAltura)
                             .addComponent(lblPeso))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(inputPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(tfAltura)
-                            .addComponent(tfPeso, javax.swing.GroupLayout.DEFAULT_SIZE, 198, Short.MAX_VALUE))))
+                            .addComponent(tfHeight, javax.swing.GroupLayout.DEFAULT_SIZE, 198, Short.MAX_VALUE)
+                            .addComponent(tfWeight, javax.swing.GroupLayout.DEFAULT_SIZE, 198, Short.MAX_VALUE))))
                 .addContainerGap(15, Short.MAX_VALUE))
         );
         inputPanelLayout.setVerticalGroup(
@@ -75,14 +107,16 @@ public class CalcIMC extends javax.swing.JFrame {
                 .addGap(10, 10, 10)
                 .addGroup(inputPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblAltura)
-                    .addComponent(tfAltura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tfHeight, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(15, 15, 15)
                 .addGroup(inputPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblPeso)
-                    .addComponent(tfPeso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(15, 15, 15)
-                .addComponent(bttnCalc, javax.swing.GroupLayout.DEFAULT_SIZE, 44, Short.MAX_VALUE)
-                .addGap(10, 10, 10))
+                    .addComponent(tfWeight, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(19, 19, 19)
+                .addGroup(inputPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(bttnLimpar, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
+                    .addComponent(bttnCalc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(15, 15, 15))
         );
 
         resultPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -90,6 +124,7 @@ public class CalcIMC extends javax.swing.JFrame {
         lblResultado.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
         lblResultado.setText("Resultado:");
 
+        lblInterpretacao.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
         lblInterpretacao.setText("Interpretação:");
 
         javax.swing.GroupLayout resultPanelLayout = new javax.swing.GroupLayout(resultPanel);
@@ -98,17 +133,17 @@ public class CalcIMC extends javax.swing.JFrame {
             resultPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(resultPanelLayout.createSequentialGroup()
                 .addGap(15, 15, 15)
-                .addGroup(resultPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblResultado)
-                    .addComponent(lblInterpretacao))
-                .addContainerGap(209, Short.MAX_VALUE))
+                .addGroup(resultPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(lblResultado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblInterpretacao, javax.swing.GroupLayout.DEFAULT_SIZE, 262, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         resultPanelLayout.setVerticalGroup(
             resultPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(resultPanelLayout.createSequentialGroup()
                 .addGap(10, 10, 10)
                 .addComponent(lblResultado)
-                .addGap(18, 18, 18)
+                .addGap(15, 15, 15)
                 .addComponent(lblInterpretacao)
                 .addGap(10, 10, 10))
         );
@@ -126,11 +161,14 @@ public class CalcIMC extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(lblTitle)
-                    .addComponent(inputPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(resultPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(bttnVoltar)))
+                    .addComponent(inputPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(bttnVoltar)
+                        .addGap(48, 48, 48))
+                    .addComponent(resultPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(5, 5, 5))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -140,10 +178,10 @@ public class CalcIMC extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(inputPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(resultPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(resultPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(bttnVoltar)
-                .addContainerGap(98, Short.MAX_VALUE))
+                .addContainerGap(85, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -161,16 +199,29 @@ public class CalcIMC extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bttnCalcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttnCalcActionPerformed
-        // TODO add your handling code here:
+        ControllerIMC.calcularIMC(this);
     }//GEN-LAST:event_bttnCalcActionPerformed
 
     private void bttnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttnVoltarActionPerformed
         dispose();
     }//GEN-LAST:event_bttnVoltarActionPerformed
 
+    private void tfHeightActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfHeightActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfHeightActionPerformed
+
+    private void tfWeightActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfWeightActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfWeightActionPerformed
+
+    private void bttnLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttnLimparActionPerformed
+        tfHeight.setText("");
+        tfWeight.setText("");
+    }//GEN-LAST:event_bttnLimparActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bttnCalc;
+    private javax.swing.JButton bttnLimpar;
     private javax.swing.JButton bttnVoltar;
     private javax.swing.JPanel inputPanel;
     private javax.swing.JPanel jPanel1;
@@ -180,7 +231,23 @@ public class CalcIMC extends javax.swing.JFrame {
     private javax.swing.JLabel lblResultado;
     private javax.swing.JLabel lblTitle;
     private javax.swing.JPanel resultPanel;
-    private javax.swing.JTextField tfAltura;
-    private javax.swing.JTextField tfPeso;
+    private javax.swing.JTextField tfHeight;
+    private javax.swing.JTextField tfWeight;
     // End of variables declaration//GEN-END:variables
+
+    public JTextField getTfHeight() {
+        return tfHeight;
+    }
+
+    public JTextField getTfWeight() {
+        return tfWeight;
+    }
+
+    public JLabel getLblInterpretacao() {
+        return lblInterpretacao;
+    }
+
+    public JLabel getLblResultado() {
+        return lblResultado;
+    }
 }

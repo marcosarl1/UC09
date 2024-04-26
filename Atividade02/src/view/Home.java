@@ -15,6 +15,8 @@ public class Home extends javax.swing.JFrame {
         bttnIMC = new javax.swing.JButton();
         bttnGastoCal = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Nutrisoft");
@@ -27,32 +29,47 @@ public class Home extends javax.swing.JFrame {
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         bttnIMC.setBackground(new java.awt.Color(0, 122, 255));
-        bttnIMC.setFont(new java.awt.Font("Inter", 0, 14)); // NOI18N
+        bttnIMC.setFont(new java.awt.Font("Inter", 1, 14)); // NOI18N
+        bttnIMC.setForeground(new java.awt.Color(255, 255, 255));
         bttnIMC.setText("IMC");
         bttnIMC.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bttnIMCActionPerformed(evt);
             }
         });
-        jPanel2.add(bttnIMC, new org.netbeans.lib.awtextra.AbsoluteConstraints(126, 85, 147, 50));
+        jPanel2.add(bttnIMC, new org.netbeans.lib.awtextra.AbsoluteConstraints(124, 134, 152, 50));
 
-        bttnGastoCal.setFont(new java.awt.Font("Inter", 0, 14)); // NOI18N
+        bttnGastoCal.setBackground(new java.awt.Color(0, 122, 255));
+        bttnGastoCal.setFont(new java.awt.Font("Inter", 1, 14)); // NOI18N
+        bttnGastoCal.setForeground(new java.awt.Color(255, 255, 255));
         bttnGastoCal.setText("Gasto Calórico");
         bttnGastoCal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bttnGastoCalActionPerformed(evt);
             }
         });
-        jPanel2.add(bttnGastoCal, new org.netbeans.lib.awtextra.AbsoluteConstraints(126, 175, 147, 50));
+        jPanel2.add(bttnGastoCal, new org.netbeans.lib.awtextra.AbsoluteConstraints(124, 211, 152, 50));
 
-        jButton3.setFont(new java.awt.Font("Inter", 0, 14)); // NOI18N
-        jButton3.setText("jButton1");
+        jButton3.setBackground(new java.awt.Color(0, 122, 255));
+        jButton3.setFont(new java.awt.Font("Inter", 1, 14)); // NOI18N
+        jButton3.setForeground(new java.awt.Color(255, 255, 255));
+        jButton3.setText("Recomendações");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(126, 265, 147, 50));
+        jPanel2.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(124, 288, 152, 50));
+
+        jLabel1.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel1.setText(" Escolha uma das opções abaixo:");
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(106, 92, 190, -1));
+
+        jLabel2.setFont(new java.awt.Font("Inter", 0, 36)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel2.setText("NutriSoft");
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(118, 35, 170, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -62,9 +79,7 @@ public class Home extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -76,7 +91,7 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_bttnIMCActionPerformed
 
     private void bttnGastoCalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttnGastoCalActionPerformed
-        CalcGastoCal gastoCalorico = new CalcGastoCal();
+        CalcGC gastoCalorico = new CalcGC();
         gastoCalorico.setVisible(true);
     }//GEN-LAST:event_bttnGastoCalActionPerformed
 
@@ -89,6 +104,8 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JButton bttnGastoCal;
     private javax.swing.JButton bttnIMC;
     private javax.swing.JButton jButton3;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel2;
     // End of variables declaration//GEN-END:variables
 }
