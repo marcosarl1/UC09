@@ -12,7 +12,7 @@ public class SaleController {
     public static void calculateSale(SaleCalculator saleCalculator) {
 
         try {
-            double price = Double.parseDouble(saleCalculator.valueField.getText());
+            double price = Double.parseDouble(saleCalculator.getValueField().getText());
             if (price <= 0) {
                 throw new IllegalArgumentException("O valor da venda deve ser maior que zero.");
             }
@@ -34,7 +34,7 @@ public class SaleController {
                         "Detalhes da venda", JOptionPane.INFORMATION_MESSAGE);
             }
         } catch (NumberFormatException e) { // Erro para campo vazio ou com input diferente de formato com ponto flutante (divisor ".")
-            if (saleCalculator.valueField.getText().isEmpty()) {
+            if (saleCalculator.getValueField().getText().isEmpty()) {
                 JOptionPane.showMessageDialog(null, "Insira o valor da venda!", "Erro", JOptionPane.ERROR_MESSAGE);
             } else {
                 JOptionPane.showMessageDialog(null, "Insira um número válido!", "Erro", JOptionPane.ERROR_MESSAGE);

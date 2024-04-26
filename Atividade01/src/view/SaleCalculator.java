@@ -13,11 +13,15 @@ import java.awt.Color;
 
 public class SaleCalculator extends JPanel {
 
-    public JTextField valueField;
+    private JTextField valueField;
     private JButton bttnCalc;
 
     public SaleCalculator() {
         init();
+    }
+
+    public JTextField getValueField() {
+        return valueField;
     }
 
     private void init() {
