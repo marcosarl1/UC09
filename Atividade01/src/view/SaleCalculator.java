@@ -9,6 +9,7 @@ import javax.swing.JTextField;
 import net.miginfocom.swing.MigLayout;
 
 import controller.SaleController;
+import java.awt.Color;
 
 public class SaleCalculator extends JPanel {
 
@@ -43,6 +44,9 @@ public class SaleCalculator extends JPanel {
         //Criando label para que o botão possa ficar no canto inferior direito da tela
         JPanel bttnPanel = new JPanel(new MigLayout("wrap, insets 20", "[right]"));
         bttnCalc = new JButton("Calcular");
+        bttnCalc.setBackground(new Color(0,122,255));
+        bttnCalc.setForeground(Color.WHITE);
+        bttnCalc.setFont(new Font(bttnCalc.getName(), Font.BOLD, 12));
 
         bttnPanel.add(bttnCalc, "tag apply, pushx");
 
