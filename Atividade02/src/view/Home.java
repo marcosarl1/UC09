@@ -14,9 +14,9 @@ public class Home extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         bttnIMC = new javax.swing.JButton();
         bttnGastoCal = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        bttnRec = new javax.swing.JButton();
+        lblSubTitle = new javax.swing.JLabel();
+        lblTitle = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Nutrisoft");
@@ -50,26 +50,26 @@ public class Home extends javax.swing.JFrame {
         });
         jPanel2.add(bttnGastoCal, new org.netbeans.lib.awtextra.AbsoluteConstraints(124, 211, 152, 50));
 
-        jButton3.setBackground(new java.awt.Color(0, 122, 255));
-        jButton3.setFont(new java.awt.Font("Inter", 1, 14)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jButton3.setText("Recomendações");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        bttnRec.setBackground(new java.awt.Color(0, 122, 255));
+        bttnRec.setFont(new java.awt.Font("Inter", 1, 14)); // NOI18N
+        bttnRec.setForeground(new java.awt.Color(255, 255, 255));
+        bttnRec.setText("Recomendações");
+        bttnRec.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                bttnRecActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(124, 288, 152, 50));
+        jPanel2.add(bttnRec, new org.netbeans.lib.awtextra.AbsoluteConstraints(124, 288, 152, 50));
 
-        jLabel1.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel1.setText(" Escolha uma das opções abaixo:");
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(106, 92, 190, -1));
+        lblSubTitle.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
+        lblSubTitle.setForeground(new java.awt.Color(0, 0, 0));
+        lblSubTitle.setText(" Escolha uma das opções abaixo:");
+        jPanel2.add(lblSubTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(106, 92, 190, -1));
 
-        jLabel2.setFont(new java.awt.Font("Inter", 0, 36)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel2.setText("NutriSoft");
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(118, 35, 170, -1));
+        lblTitle.setFont(new java.awt.Font("Inter", 0, 36)); // NOI18N
+        lblTitle.setForeground(new java.awt.Color(0, 0, 0));
+        lblTitle.setText("NutriSoft");
+        jPanel2.add(lblTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(118, 35, 170, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -95,17 +95,18 @@ public class Home extends javax.swing.JFrame {
         gastoCalorico.setVisible(true);
     }//GEN-LAST:event_bttnGastoCalActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    private void bttnRecActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttnRecActionPerformed
+        CalcRec calcRec = new CalcRec();
+        calcRec.setVisible(true);
+    }//GEN-LAST:event_bttnRecActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bttnGastoCal;
     private javax.swing.JButton bttnIMC;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JButton bttnRec;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JLabel lblSubTitle;
+    private javax.swing.JLabel lblTitle;
     // End of variables declaration//GEN-END:variables
 }
