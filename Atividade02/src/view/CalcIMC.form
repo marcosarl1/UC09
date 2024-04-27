@@ -145,7 +145,7 @@
                           <Component id="bttnLimpar" pref="35" max="32767" attributes="0"/>
                           <Component id="bttnCalc" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+                      <EmptySpace pref="15" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -170,17 +170,23 @@
             <Component class="javax.swing.JTextField" name="tfHeight">
               <Properties>
                 <Property name="toolTipText" type="java.lang.String" value="Insira a altura"/>
+                <Property name="nextFocusableComponent" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                  <ComponentRef name="tfWeight"/>
+                </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tfHeightActionPerformed"/>
+                <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tfHeightKeyPressed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="tfWeight">
               <Properties>
                 <Property name="toolTipText" type="java.lang.String" value="Insira o peso"/>
+                <Property name="nextFocusableComponent" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                  <ComponentRef name="bttnCalc"/>
+                </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tfWeightActionPerformed"/>
+                <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tfWeightKeyPressed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JButton" name="bttnCalc">
@@ -195,6 +201,9 @@
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Calcular"/>
+                <Property name="nextFocusableComponent" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                  <ComponentRef name="bttnLimpar"/>
+                </Property>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bttnCalcActionPerformed"/>
@@ -203,6 +212,9 @@
             <Component class="javax.swing.JButton" name="bttnLimpar">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Limpar"/>
+                <Property name="nextFocusableComponent" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                  <ComponentRef name="bttnVoltar"/>
+                </Property>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bttnLimparActionPerformed"/>

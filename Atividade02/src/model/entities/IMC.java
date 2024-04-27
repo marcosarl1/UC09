@@ -2,7 +2,7 @@ package model.entities;
 
 public class IMC {
 
-    public Double calcularIMC(double weight, double height) {
+    public static Double calcularIMC(double weight, double height) {
         if (weight <= 0) {
             throw new IllegalArgumentException("O peso deve ser um valor positivo maior que zero");
         }
@@ -12,7 +12,7 @@ public class IMC {
         return weight / (height * height);
     }
 
-    public String interpretarIMC(double imc) {
+    public static String interpretarIMC(double imc) {
         if (imc < 18.5) {
             return "Magreza";
         } else if (imc < 25) {

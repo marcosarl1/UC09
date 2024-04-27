@@ -2,6 +2,7 @@ package view;
 
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+import java.awt.event.KeyEvent;
 
 import controller.ControllerIMC;
 
@@ -50,16 +51,18 @@ public class CalcIMC extends javax.swing.JFrame implements ErrorDisplayable{
         lblPeso.setText("Peso (kg):");
 
         tfHeight.setToolTipText("Insira a altura");
-        tfHeight.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tfHeightActionPerformed(evt);
+        tfHeight.setNextFocusableComponent(tfWeight);
+        tfHeight.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                tfHeightKeyPressed(evt);
             }
         });
 
         tfWeight.setToolTipText("Insira o peso");
-        tfWeight.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tfWeightActionPerformed(evt);
+        tfWeight.setNextFocusableComponent(bttnCalc);
+        tfWeight.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                tfWeightKeyPressed(evt);
             }
         });
 
@@ -67,6 +70,7 @@ public class CalcIMC extends javax.swing.JFrame implements ErrorDisplayable{
         bttnCalc.setFont(new java.awt.Font("Inter", 1, 12)); // NOI18N
         bttnCalc.setForeground(new java.awt.Color(255, 255, 255));
         bttnCalc.setText("Calcular");
+        bttnCalc.setNextFocusableComponent(bttnLimpar);
         bttnCalc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bttnCalcActionPerformed(evt);
@@ -74,6 +78,7 @@ public class CalcIMC extends javax.swing.JFrame implements ErrorDisplayable{
         });
 
         bttnLimpar.setText("Limpar");
+        bttnLimpar.setNextFocusableComponent(bttnVoltar);
         bttnLimpar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bttnLimparActionPerformed(evt);
@@ -116,7 +121,7 @@ public class CalcIMC extends javax.swing.JFrame implements ErrorDisplayable{
                 .addGroup(inputPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(bttnLimpar, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
                     .addComponent(bttnCalc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(15, 15, 15))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         resultPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -199,25 +204,28 @@ public class CalcIMC extends javax.swing.JFrame implements ErrorDisplayable{
     }// </editor-fold>//GEN-END:initComponents
 
     private void bttnCalcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttnCalcActionPerformed
-        ControllerIMC.calcularIMC(this);
+        ControllerIMC.calculateIMC(this);
     }//GEN-LAST:event_bttnCalcActionPerformed
 
     private void bttnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttnVoltarActionPerformed
         dispose();
     }//GEN-LAST:event_bttnVoltarActionPerformed
-
-    private void tfHeightActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfHeightActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tfHeightActionPerformed
-
-    private void tfWeightActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfWeightActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tfWeightActionPerformed
-
     private void bttnLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttnLimparActionPerformed
         tfHeight.setText("");
         tfWeight.setText("");
     }//GEN-LAST:event_bttnLimparActionPerformed
+
+    private void tfHeightKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfHeightKeyPressed
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            tfWeight.requestFocusInWindow();
+        }
+    }//GEN-LAST:event_tfHeightKeyPressed
+
+    private void tfWeightKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfWeightKeyPressed
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            bttnCalc.doClick();
+        }
+    }//GEN-LAST:event_tfWeightKeyPressed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bttnCalc;
