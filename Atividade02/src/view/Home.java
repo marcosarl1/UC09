@@ -32,6 +32,7 @@ public class Home extends javax.swing.JFrame {
         bttnIMC.setFont(new java.awt.Font("Inter", 1, 14)); // NOI18N
         bttnIMC.setForeground(new java.awt.Color(255, 255, 255));
         bttnIMC.setText("IMC");
+        bttnIMC.setToolTipText("Abrir tela de cálculo de IMC.");
         bttnIMC.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bttnIMCActionPerformed(evt);
@@ -43,6 +44,7 @@ public class Home extends javax.swing.JFrame {
         bttnGastoCal.setFont(new java.awt.Font("Inter", 1, 14)); // NOI18N
         bttnGastoCal.setForeground(new java.awt.Color(255, 255, 255));
         bttnGastoCal.setText("Gasto Calórico");
+        bttnGastoCal.setToolTipText("Abrir tela de gasto calórico.");
         bttnGastoCal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bttnGastoCalActionPerformed(evt);
@@ -54,6 +56,7 @@ public class Home extends javax.swing.JFrame {
         bttnRec.setFont(new java.awt.Font("Inter", 1, 14)); // NOI18N
         bttnRec.setForeground(new java.awt.Color(255, 255, 255));
         bttnRec.setText("Recomendações");
+        bttnRec.setToolTipText("Abrir tela de cálculo de recomendações.");
         bttnRec.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bttnRecActionPerformed(evt);

@@ -11,8 +11,8 @@ public class ControllerCalories {
             validateInputs(calcGC.getTfWeight().getText().replace(',', '.').trim(),
                     calcGC.getTfHeight().getText().replace(',', '.').trim(),
                     calcGC.getTfAge().getText().trim());
-            
-            if(!calcGC.getRbFemale().isSelected() && !calcGC.getRbMale().isSelected()){
+
+            if (!calcGC.getRbFemale().isSelected() && !calcGC.getRbMale().isSelected()) {
                 throw new IllegalArgumentException("Selecione o sexo.");
             }
 
@@ -26,12 +26,9 @@ public class ControllerCalories {
             double basalCalories = Calories.calculateBasalCalories(weight, height, age, isMale);
             double activityFactor = getActivityFactor((String) calcGC.getCbActivity().getSelectedItem());
             double totalCalories = Calories.calculateTotalCalories(basalCalories, activityFactor);
-
-            //Retornando resultados
-            calcGC.getLblGastoBasal().setText("Gasto Basal: " + String.format("%.2f", basalCalories));
-            calcGC.getLblGastoTotal().setText("Gasto Total: " + String.format("%.2f", totalCalories));
             
-
+            //Retornando resultados
+            updateResults(calcGC, basalCalories, totalCalories);
         } catch (IllegalArgumentException e) {
             calcGC.displayError(e.getMessage());
         }
@@ -39,12 +36,18 @@ public class ControllerCalories {
 
     private static double getActivityFactor(String selectedActivity) {
         return switch (selectedActivity) {
-            case "Sedentário" -> 1.2;
-            case "Leve (exercício leve 1 a 3 dias/semana)" -> 1.375;
-            case "Moderado (exercício moderado 3 a 5 dias/semana)" -> 1.55;
-            case "Ativo (exercício pesado 5 a 6 dias/semana)" -> 1.725;
-            case "Extremamente ativo (exercício pesado diário)" -> 1.9;
-            default -> 1.0; 
+            case "Sedentário" ->
+                1.2;
+            case "Leve (exercício leve 1 a 3 dias/semana)" ->
+                1.375;
+            case "Moderado (exercício moderado 3 a 5 dias/semana)" ->
+                1.55;
+            case "Ativo (exercício pesado 5 a 6 dias/semana)" ->
+                1.725;
+            case "Extremamente ativo (exercício pesado diário)" ->
+                1.9;
+            default ->
+                1.0;
         };
     }
 
@@ -76,5 +79,10 @@ public class ControllerCalories {
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("Digite um valor válido para idade.");
         }
+    }
+
+    private static void updateResults(CalcGC calcGC, double  basalCalories, double totalCalories) {
+        calcGC.getLblGastoBasal().setText("Gasto Basal: " + String.format("%.2f", basalCalories));
+        calcGC.getLblGastoTotal().setText("Gasto Total: " + String.format("%.2f", totalCalories));
     }
 }

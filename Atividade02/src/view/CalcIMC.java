@@ -6,11 +6,12 @@ import java.awt.event.KeyEvent;
 
 import controller.ControllerIMC;
 
-public class CalcIMC extends javax.swing.JFrame implements ErrorDisplayable{
+public class CalcIMC extends javax.swing.JFrame implements ErrorDisplayable {
 
     public CalcIMC() {
         initComponents();
         setLocationRelativeTo(null);
+        shortcuts();
     }
 
     @SuppressWarnings("unchecked")
@@ -50,21 +51,11 @@ public class CalcIMC extends javax.swing.JFrame implements ErrorDisplayable{
         lblPeso.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
         lblPeso.setText("Peso (kg):");
 
-        tfHeight.setToolTipText("Insira a altura");
+        tfHeight.setToolTipText("Digite a altura em metros.");
         tfHeight.setNextFocusableComponent(tfWeight);
-        tfHeight.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                tfHeightKeyPressed(evt);
-            }
-        });
 
-        tfWeight.setToolTipText("Insira o peso");
+        tfWeight.setToolTipText("Digite o peso em quilogramas.");
         tfWeight.setNextFocusableComponent(bttnCalc);
-        tfWeight.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                tfWeightKeyPressed(evt);
-            }
-        });
 
         bttnCalc.setBackground(new java.awt.Color(0, 122, 255));
         bttnCalc.setFont(new java.awt.Font("Inter", 1, 12)); // NOI18N
@@ -78,6 +69,7 @@ public class CalcIMC extends javax.swing.JFrame implements ErrorDisplayable{
         });
 
         bttnLimpar.setText("Limpar");
+        bttnLimpar.setToolTipText("Limpar todos os campos.");
         bttnLimpar.setNextFocusableComponent(bttnVoltar);
         bttnLimpar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -154,6 +146,7 @@ public class CalcIMC extends javax.swing.JFrame implements ErrorDisplayable{
         );
 
         bttnVoltar.setText("< Voltar");
+        bttnVoltar.setToolTipText("Voltar para a tela inicial.");
         bttnVoltar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bttnVoltarActionPerformed(evt);
@@ -167,12 +160,10 @@ public class CalcIMC extends javax.swing.JFrame implements ErrorDisplayable{
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(lblTitle)
                     .addComponent(inputPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(bttnVoltar)
-                        .addGap(48, 48, 48))
-                    .addComponent(resultPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(resultPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblTitle)
+                    .addComponent(bttnVoltar))
                 .addGap(5, 5, 5))
         );
         jPanel1Layout.setVerticalGroup(
@@ -213,35 +204,13 @@ public class CalcIMC extends javax.swing.JFrame implements ErrorDisplayable{
     private void bttnLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttnLimparActionPerformed
         tfHeight.setText("");
         tfWeight.setText("");
+        lblResultado.setText("Resultado: ");
+        lblInterpretacao.setText("Interpretação: ");
     }//GEN-LAST:event_bttnLimparActionPerformed
 
-    private void tfHeightKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfHeightKeyPressed
-        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
-            tfWeight.requestFocusInWindow();
-        }
-    }//GEN-LAST:event_tfHeightKeyPressed
-
-    private void tfWeightKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfWeightKeyPressed
-        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
-            bttnCalc.doClick();
-        }
-    }//GEN-LAST:event_tfWeightKeyPressed
-
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton bttnCalc;
-    private javax.swing.JButton bttnLimpar;
-    private javax.swing.JButton bttnVoltar;
-    private javax.swing.JPanel inputPanel;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JLabel lblAltura;
-    private javax.swing.JLabel lblInterpretacao;
-    private javax.swing.JLabel lblPeso;
-    private javax.swing.JLabel lblResultado;
-    private javax.swing.JLabel lblTitle;
-    private javax.swing.JPanel resultPanel;
-    private javax.swing.JTextField tfHeight;
-    private javax.swing.JTextField tfWeight;
-    // End of variables declaration//GEN-END:variables
+    private void shortcuts() {
+        getRootPane().setDefaultButton(bttnCalc);
+    }
 
     public JTextField getTfHeight() {
         return tfHeight;
@@ -258,4 +227,20 @@ public class CalcIMC extends javax.swing.JFrame implements ErrorDisplayable{
     public JLabel getLblResultado() {
         return lblResultado;
     }
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bttnCalc;
+    private javax.swing.JButton bttnLimpar;
+    private javax.swing.JButton bttnVoltar;
+    private javax.swing.JPanel inputPanel;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel lblAltura;
+    private javax.swing.JLabel lblInterpretacao;
+    private javax.swing.JLabel lblPeso;
+    private javax.swing.JLabel lblResultado;
+    private javax.swing.JLabel lblTitle;
+    private javax.swing.JPanel resultPanel;
+    private javax.swing.JTextField tfHeight;
+    private javax.swing.JTextField tfWeight;
+    // End of variables declaration//GEN-END:variables
+
 }

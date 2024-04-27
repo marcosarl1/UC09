@@ -1,10 +1,16 @@
 package view;
 
-public class CalcRec extends javax.swing.JFrame implements ErrorDisplayable{
+import controller.ControllerRec;
+import java.awt.event.KeyEvent;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+
+public class CalcRec extends javax.swing.JFrame implements ErrorDisplayable {
 
     public CalcRec() {
         initComponents();
         setLocationRelativeTo(null);
+        shortcuts();
     }
 
     @SuppressWarnings("unchecked")
@@ -24,6 +30,7 @@ public class CalcRec extends javax.swing.JFrame implements ErrorDisplayable{
         bttnVoltar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Recomendações\n");
         setResizable(false);
 
         jLabel1.setFont(new java.awt.Font("Inter", 0, 24)); // NOI18N
@@ -36,14 +43,26 @@ public class CalcRec extends javax.swing.JFrame implements ErrorDisplayable{
         lblCal.setText("Calorias diárias (kcal):");
 
         tfCal.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
+        tfCal.setToolTipText("Digite as calorias diárias.");
 
         bttnCalc.setBackground(new java.awt.Color(0, 122, 255));
         bttnCalc.setFont(new java.awt.Font("Inter", 1, 12)); // NOI18N
         bttnCalc.setForeground(new java.awt.Color(255, 255, 255));
         bttnCalc.setText("Calcular");
+        bttnCalc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bttnCalcActionPerformed(evt);
+            }
+        });
 
         bttnLimpar.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
         bttnLimpar.setText("Limpar");
+        bttnLimpar.setToolTipText("Limpar todos os campos.");
+        bttnLimpar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bttnLimparActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout inputPanelLayout = new javax.swing.GroupLayout(inputPanel);
         inputPanel.setLayout(inputPanelLayout);
@@ -79,6 +98,8 @@ public class CalcRec extends javax.swing.JFrame implements ErrorDisplayable{
                     .addComponent(bttnLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(11, Short.MAX_VALUE))
         );
+
+        tfCal.getAccessibleContext().setAccessibleName("");
 
         resultPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
@@ -117,6 +138,7 @@ public class CalcRec extends javax.swing.JFrame implements ErrorDisplayable{
 
         bttnVoltar.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
         bttnVoltar.setText("< Voltar");
+        bttnVoltar.setToolTipText("Voltar para tela inicial.");
         bttnVoltar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bttnVoltarActionPerformed(evt);
@@ -158,6 +180,36 @@ public class CalcRec extends javax.swing.JFrame implements ErrorDisplayable{
         dispose();
     }//GEN-LAST:event_bttnVoltarActionPerformed
 
+    private void bttnLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttnLimparActionPerformed
+        tfCal.setText("");
+        lblCarbo.setText("Carboidratos (50%): ");
+        lblProtein.setText("Proteína (25%): ");
+        lblGordura.setText("Gordura (25%): ");
+    }//GEN-LAST:event_bttnLimparActionPerformed
+
+    private void bttnCalcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttnCalcActionPerformed
+        ControllerRec.calculateRecs(this);
+    }//GEN-LAST:event_bttnCalcActionPerformed
+
+    private void shortcuts() {
+        getRootPane().setDefaultButton(bttnCalc);
+    }
+
+    public JLabel getLblCarbo() {
+        return lblCarbo;
+    }
+
+    public JLabel getLblGordura() {
+        return lblGordura;
+    }
+
+    public JLabel getLblProtein() {
+        return lblProtein;
+    }
+
+    public JTextField getTfCal() {
+        return tfCal;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bttnCalc;

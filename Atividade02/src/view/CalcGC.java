@@ -1,16 +1,18 @@
 package view;
 
 import controller.ControllerCalories;
+import java.awt.event.KeyEvent;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
-public class CalcGC extends javax.swing.JFrame implements ErrorDisplayable{
+public class CalcGC extends javax.swing.JFrame implements ErrorDisplayable {
 
     public CalcGC() {
         initComponents();
         setLocationRelativeTo(null);
+        shortcuts();
     }
 
     @SuppressWarnings("unchecked")
@@ -55,18 +57,22 @@ public class CalcGC extends javax.swing.JFrame implements ErrorDisplayable{
         bttnsFM.add(rbFemale);
         rbFemale.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
         rbFemale.setText("Feminino");
+        rbFemale.setToolTipText("Selecione se o sexo é feminino.");
         rbFemale.setNextFocusableComponent(rbMale);
 
         bttnsFM.add(rbMale);
         rbMale.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
         rbMale.setText("Masculino");
+        rbMale.setToolTipText("Selecione se o sexo é masculino.");
         rbMale.setNextFocusableComponent(tfWeight);
 
         lblWeight.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
         lblWeight.setText("Peso (kg):");
 
+        tfWeight.setToolTipText("Digite o peso em quilogramas.");
         tfWeight.setNextFocusableComponent(tfHeight);
 
+        tfHeight.setToolTipText("Digite a altura em centímetros.");
         tfHeight.setNextFocusableComponent(tfAge);
 
         lblHeight.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
@@ -75,6 +81,7 @@ public class CalcGC extends javax.swing.JFrame implements ErrorDisplayable{
         lblAge.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
         lblAge.setText("Idade:");
 
+        tfAge.setToolTipText("Digite a idade em anos.");
         tfAge.setNextFocusableComponent(cbActivity);
 
         lblActivity.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
@@ -82,12 +89,14 @@ public class CalcGC extends javax.swing.JFrame implements ErrorDisplayable{
 
         cbActivity.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
         cbActivity.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sedentário", "Leve (exercício leve 1 a 3 dias/semana)", "Moderado (exercício moderado 3 a 5 dias/semana)", "Ativo (exercício pesado 5 a 6 dias/semana)", "Extremamente ativo (exercício pesado diário)" }));
+        cbActivity.setToolTipText("Selecione o nível de atividade.");
         cbActivity.setNextFocusableComponent(bttnCalc);
 
         bttnCalc.setBackground(new java.awt.Color(0, 122, 255));
         bttnCalc.setFont(new java.awt.Font("Inter", 1, 12)); // NOI18N
         bttnCalc.setForeground(new java.awt.Color(255, 255, 255));
         bttnCalc.setText("Calcular");
+        bttnCalc.setToolTipText("Calcular.");
         bttnCalc.setNextFocusableComponent(bttnLimpar);
         bttnCalc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -96,6 +105,7 @@ public class CalcGC extends javax.swing.JFrame implements ErrorDisplayable{
         });
 
         bttnLimpar.setText("Limpar");
+        bttnLimpar.setToolTipText("Limpar todos os campos.");
         bttnLimpar.setNextFocusableComponent(bttnVoltar);
         bttnLimpar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -210,6 +220,7 @@ public class CalcGC extends javax.swing.JFrame implements ErrorDisplayable{
         );
 
         bttnVoltar.setText("< Voltar");
+        bttnVoltar.setToolTipText("Voltar para a tela inicial.");
         bttnVoltar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bttnVoltarActionPerformed(evt);
@@ -263,33 +274,13 @@ public class CalcGC extends javax.swing.JFrame implements ErrorDisplayable{
         tfAge.setText("");
         cbActivity.setSelectedIndex(0);
         bttnsFM.clearSelection();
+        lblGastoBasal.setText("Gasto Basal: ");
+        lblGastoTotal.setText("Gasto Total: ");
     }//GEN-LAST:event_bttnLimparActionPerformed
 
-
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton bttnCalc;
-    private javax.swing.JButton bttnLimpar;
-    private javax.swing.JButton bttnVoltar;
-    private javax.swing.ButtonGroup bttnsFM;
-    private javax.swing.JComboBox<String> cbActivity;
-    private javax.swing.Box.Filler filler1;
-    private javax.swing.JPanel inputPanel;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel lblActivity;
-    private javax.swing.JLabel lblAge;
-    private javax.swing.JLabel lblGastoBasal;
-    private javax.swing.JLabel lblGastoTotal;
-    private javax.swing.JLabel lblHeight;
-    private javax.swing.JLabel lblTitle;
-    private javax.swing.JLabel lblWeight;
-    private javax.swing.JRadioButton rbFemale;
-    private javax.swing.JRadioButton rbMale;
-    private javax.swing.JPanel resultPanel;
-    private javax.swing.JTextField tfAge;
-    private javax.swing.JTextField tfHeight;
-    private javax.swing.JTextField tfWeight;
-    // End of variables declaration//GEN-END:variables
-
+    private void shortcuts(){
+        getRootPane().setDefaultButton(bttnCalc);
+    }
     public JComboBox<String> getCbActivity() {
         return cbActivity;
     }
@@ -321,4 +312,29 @@ public class CalcGC extends javax.swing.JFrame implements ErrorDisplayable{
     public JLabel getLblGastoTotal() {
         return lblGastoTotal;
     }
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bttnCalc;
+    private javax.swing.JButton bttnLimpar;
+    private javax.swing.JButton bttnVoltar;
+    private javax.swing.ButtonGroup bttnsFM;
+    private javax.swing.JComboBox<String> cbActivity;
+    private javax.swing.Box.Filler filler1;
+    private javax.swing.JPanel inputPanel;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel lblActivity;
+    private javax.swing.JLabel lblAge;
+    private javax.swing.JLabel lblGastoBasal;
+    private javax.swing.JLabel lblGastoTotal;
+    private javax.swing.JLabel lblHeight;
+    private javax.swing.JLabel lblTitle;
+    private javax.swing.JLabel lblWeight;
+    private javax.swing.JRadioButton rbFemale;
+    private javax.swing.JRadioButton rbMale;
+    private javax.swing.JPanel resultPanel;
+    private javax.swing.JTextField tfAge;
+    private javax.swing.JTextField tfHeight;
+    private javax.swing.JTextField tfWeight;
+    // End of variables declaration//GEN-END:variables
+
 }

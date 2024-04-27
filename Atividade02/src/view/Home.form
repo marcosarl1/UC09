@@ -67,6 +67,7 @@
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="IMC"/>
+            <Property name="toolTipText" type="java.lang.String" value="Abrir tela de c&#xe1;lculo de IMC."/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bttnIMCActionPerformed"/>
@@ -89,6 +90,7 @@
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Gasto Cal&#xf3;rico"/>
+            <Property name="toolTipText" type="java.lang.String" value="Abrir tela de gasto cal&#xf3;rico."/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bttnGastoCalActionPerformed"/>
@@ -111,6 +113,7 @@
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Recomenda&#xe7;&#xf5;es"/>
+            <Property name="toolTipText" type="java.lang.String" value="Abrir tela de c&#xe1;lculo de recomenda&#xe7;&#xf5;es."/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bttnRecActionPerformed"/>

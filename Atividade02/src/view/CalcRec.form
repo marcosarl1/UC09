@@ -3,6 +3,7 @@
 <Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="2"/>
+    <Property name="title" type="java.lang.String" value="Recomenda&#xe7;&#xf5;es&#xa;"/>
     <Property name="resizable" type="boolean" value="false"/>
   </Properties>
   <SyntheticProperties>
@@ -133,7 +134,11 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Inter" size="12" style="0"/>
             </Property>
+            <Property name="toolTipText" type="java.lang.String" value="Digite as calorias di&#xe1;rias."/>
           </Properties>
+          <AccessibilityProperties>
+            <Property name="AccessibleContext.accessibleName" type="java.lang.String" value=""/>
+          </AccessibilityProperties>
         </Component>
         <Component class="javax.swing.JButton" name="bttnCalc">
           <Properties>
@@ -148,6 +153,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Calcular"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bttnCalcActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="bttnLimpar">
           <Properties>
@@ -155,7 +163,11 @@
               <Font name="Inter" size="12" style="0"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Limpar"/>
+            <Property name="toolTipText" type="java.lang.String" value="Limpar todos os campos."/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bttnLimparActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
@@ -229,6 +241,7 @@
           <Font name="Inter" size="12" style="0"/>
         </Property>
         <Property name="text" type="java.lang.String" value="&lt; Voltar"/>
+        <Property name="toolTipText" type="java.lang.String" value="Voltar para tela inicial."/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bttnVoltarActionPerformed"/>
