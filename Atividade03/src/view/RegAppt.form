@@ -135,6 +135,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Inter" size="12" style="0"/>
             </Property>
+            <Property name="toolTipText" type="java.lang.String" value="Insira o nome do paciente."/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="lblTel">
@@ -150,6 +151,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Inter" size="12" style="0"/>
             </Property>
+            <Property name="toolTipText" type="java.lang.String" value="Insira o n&#xfa;mero de telefone do paciente."/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="lblCPF">
@@ -162,6 +164,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Inter" size="12" style="0"/>
             </Property>
+            <Property name="toolTipText" type="java.lang.String" value="Insira o CPF do paciente."/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="lblDate">
@@ -174,6 +177,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Inter" size="12" style="0"/>
             </Property>
+            <Property name="toolTipText" type="java.lang.String" value="Insira a data da consulta."/>
           </Properties>
         </Component>
         <Component class="javax.swing.JCheckBox" name="chkIsPatient">
@@ -182,10 +186,8 @@
               <Font name="Inter" size="12" style="0"/>
             </Property>
             <Property name="text" type="java.lang.String" value="J&#xe1; &#xe9; paciente?"/>
+            <Property name="toolTipText" type="java.lang.String" value="Selecione se j&#xe1; &#xe9; paciente."/>
           </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="chkIsPatientActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="bttnCadastrar">
           <Properties>
@@ -199,6 +201,7 @@
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Cadastrar"/>
+            <Property name="toolTipText" type="java.lang.String" value="Selecione para cadastrar nova consulta."/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bttnCadastrarActionPerformed"/>

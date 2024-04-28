@@ -84,6 +84,7 @@
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Nova Consulta"/>
+        <Property name="toolTipText" type="java.lang.String" value="Abrir tela para cadastro de nova consulta."/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bttnNewApptActionPerformed"/>
@@ -101,6 +102,7 @@
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Excluir Consulta"/>
+        <Property name="toolTipText" type="java.lang.String" value="Excluir consulta selecionada."/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bttnDeleteApptActionPerformed"/>
@@ -118,6 +120,7 @@
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Finalizar Consulta"/>
+        <Property name="toolTipText" type="java.lang.String" value="Abrir tela para finaliza&#xe7;&#xe3;o de consulta."/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bttnEndApptActionPerformed"/>
@@ -145,6 +148,7 @@
                 <Column editable="true" title="Consulta realizada" type="java.lang.Object"/>
               </Table>
             </Property>
+            <Property name="toolTipText" type="java.lang.String" value="Tabela de consultas."/>
             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
               <TableColumnModel selectionModel="0">
                 <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
@@ -179,6 +183,7 @@
                 </Column>
               </TableColumnModel>
             </Property>
+            <Property name="requestFocusEnabled" type="boolean" value="false"/>
             <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
               <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
             </Property>

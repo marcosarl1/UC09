@@ -1,17 +1,19 @@
 package view;
 
-import javax.swing.JTextArea;
 import model.entities.Appt;
 
 public class EndAppt extends javax.swing.JFrame implements DisplayPopups {
 
     private final Appt selectedAppt;
+    private final Home home;
 
-    public EndAppt(Appt appt) {
+    public EndAppt(Home home, Appt appt) {
+        this.home = home;
         this.selectedAppt = appt;
         initComponents();
         setLocationRelativeTo(null);
         updateDetails();
+        shortcuts();
     }
 
     @SuppressWarnings("unchecked")
@@ -42,6 +44,7 @@ public class EndAppt extends javax.swing.JFrame implements DisplayPopups {
         bttnEnd.setFont(new java.awt.Font("Inter", 1, 14)); // NOI18N
         bttnEnd.setForeground(new java.awt.Color(255, 255, 255));
         bttnEnd.setText("Finalizar");
+        bttnEnd.setToolTipText("Selecione para finalizar a consulta.");
         bttnEnd.setVisible(false);
         if (!selectedAppt.getApptDone()){
             bttnEnd.setVisible(true);
@@ -57,9 +60,12 @@ public class EndAppt extends javax.swing.JFrame implements DisplayPopups {
 
         chkIsApptDone.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
         chkIsApptDone.setText("Consulta Realizada");
+        chkIsApptDone.setToolTipText("Selecione se a consulta foi realizada.");
+        chkIsApptDone.setEnabled(false);
 
         bttnCancel.setFont(new java.awt.Font("Inter", 0, 14)); // NOI18N
         bttnCancel.setText("Cancelar");
+        bttnCancel.setToolTipText("Selecione para cancelar operação.");
         bttnCancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bttnCancelActionPerformed(evt);
@@ -106,6 +112,8 @@ public class EndAppt extends javax.swing.JFrame implements DisplayPopups {
                 .addGap(36, 36, 36))
         );
 
+        chkIsApptDone.getAccessibleContext().setAccessibleDescription("Marcado se consulta já foi realizada ou não.");
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -117,18 +125,21 @@ public class EndAppt extends javax.swing.JFrame implements DisplayPopups {
         finalizeAppt();
     }//GEN-LAST:event_bttnEndActionPerformed
 
+    private void shortcuts() {
+        getRootPane().setDefaultButton(bttnEnd);
+    }
+
     private void updateDetails() {
         if (selectedAppt != null) {
             textPrescription.setText(selectedAppt.getPrescription());
             chkIsApptDone.setSelected(selectedAppt.getApptDone());
-            chkIsApptDone.setEnabled(!selectedAppt.getApptDone());
             textPrescription.setEditable(!selectedAppt.getApptDone());
             updateButtonsVisibility();
         }
     }
-    
-    private void updateButtonsVisibility(){
-        if (selectedAppt != null && !selectedAppt.getApptDone()){
+
+    private void updateButtonsVisibility() {
+        if (selectedAppt != null && !selectedAppt.getApptDone()) {
             bttnEnd.setVisible(true);
             bttnCancel.setVisible(true);
         } else {
@@ -136,20 +147,20 @@ public class EndAppt extends javax.swing.JFrame implements DisplayPopups {
             bttnCancel.setVisible(false);
         }
     }
-    
-    private void finalizeAppt(){
+
+    private void finalizeAppt() {
         String prescriptionText = textPrescription.getText().trim();
         if (!prescriptionText.isEmpty()) {
             selectedAppt.setPrescription(prescriptionText);
             selectedAppt.setApptDone(true);
             displaySuccess("Consulta finalizada com sucesso!");
+            home.refreshTable();
             dispose();
         } else {
             displayError("Preencha o campo de receita e observações.");
-        }  
+        }
     }
 
-    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bttnCancel;
     private javax.swing.JButton bttnEnd;

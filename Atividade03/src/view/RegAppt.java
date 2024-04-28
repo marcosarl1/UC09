@@ -5,7 +5,7 @@ import javax.swing.JTextField;
 
 import controller.ControllerAppt;
 
-public class RegAppt extends javax.swing.JFrame implements DisplayPopups{
+public class RegAppt extends javax.swing.JFrame implements DisplayPopups {
 
     private final Home home;
 
@@ -13,8 +13,9 @@ public class RegAppt extends javax.swing.JFrame implements DisplayPopups{
         this.home = home;
         initComponents();
         setLocationRelativeTo(null);
+        shortcuts();
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -42,32 +43,33 @@ public class RegAppt extends javax.swing.JFrame implements DisplayPopups{
         lblName.setText("Nome do(a) Paciente:");
 
         textName.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
+        textName.setToolTipText("Insira o nome do paciente.");
 
         lblTel.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
         lblTel.setText("Telefone:");
 
         textTel.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
+        textTel.setToolTipText("Insira o número de telefone do paciente.");
 
         lblCPF.setText("CPF:");
 
         textCPF.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
+        textCPF.setToolTipText("Insira o CPF do paciente.");
 
         lblDate.setText("Data da Consulta:");
 
         textDate.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
+        textDate.setToolTipText("Insira a data da consulta.");
 
         chkIsPatient.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
         chkIsPatient.setText("Já é paciente?");
-        chkIsPatient.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chkIsPatientActionPerformed(evt);
-            }
-        });
+        chkIsPatient.setToolTipText("Selecione se já é paciente.");
 
         bttnCadastrar.setBackground(new java.awt.Color(0, 122, 255));
         bttnCadastrar.setFont(new java.awt.Font("Inter", 1, 14)); // NOI18N
         bttnCadastrar.setForeground(new java.awt.Color(255, 255, 255));
         bttnCadastrar.setText("Cadastrar");
+        bttnCadastrar.setToolTipText("Selecione para cadastrar nova consulta.");
         bttnCadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bttnCadastrarActionPerformed(evt);
@@ -152,16 +154,14 @@ public class RegAppt extends javax.swing.JFrame implements DisplayPopups{
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void chkIsPatientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkIsPatientActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_chkIsPatientActionPerformed
-
     private void bttnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttnCadastrarActionPerformed
         ControllerAppt.registerAppt(home, this);
     }//GEN-LAST:event_bttnCadastrarActionPerformed
 
+    private void shortcuts() {
+        getRootPane().setDefaultButton(bttnCadastrar);
+    }
 
-    
     public JCheckBox getChkIsPatient() {
         return chkIsPatient;
     }

@@ -40,6 +40,7 @@ public class Home extends javax.swing.JFrame implements DisplayPopups {
         bttnNewAppt.setFont(new java.awt.Font("Inter", 1, 12)); // NOI18N
         bttnNewAppt.setForeground(new java.awt.Color(255, 255, 255));
         bttnNewAppt.setText("Nova Consulta");
+        bttnNewAppt.setToolTipText("Abrir tela para cadastro de nova consulta.");
         bttnNewAppt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bttnNewApptActionPerformed(evt);
@@ -50,6 +51,7 @@ public class Home extends javax.swing.JFrame implements DisplayPopups {
         bttnDeleteAppt.setFont(new java.awt.Font("Inter", 1, 12)); // NOI18N
         bttnDeleteAppt.setForeground(new java.awt.Color(255, 255, 255));
         bttnDeleteAppt.setText("Excluir Consulta");
+        bttnDeleteAppt.setToolTipText("Excluir consulta selecionada.");
         bttnDeleteAppt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bttnDeleteApptActionPerformed(evt);
@@ -60,6 +62,7 @@ public class Home extends javax.swing.JFrame implements DisplayPopups {
         bttnEndAppt.setFont(new java.awt.Font("Inter", 1, 12)); // NOI18N
         bttnEndAppt.setForeground(new java.awt.Color(255, 255, 255));
         bttnEndAppt.setText("Finalizar Consulta");
+        bttnEndAppt.setToolTipText("Abrir tela para finalização de consulta.");
         bttnEndAppt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bttnEndApptActionPerformed(evt);
@@ -75,6 +78,8 @@ public class Home extends javax.swing.JFrame implements DisplayPopups {
                 "Paciente", "CPF", "Telefone", "Data", "Já era paciente?", "Consulta realizada"
             }
         ));
+        tblAppt.setToolTipText("Tabela de consultas.");
+        tblAppt.setRequestFocusEnabled(false);
         jScrollPane1.setViewportView(tblAppt);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -122,9 +127,8 @@ public class Home extends javax.swing.JFrame implements DisplayPopups {
         int posAppt = getPositionAppt();
         if (posAppt >= 0) {
             Appt selectedAppt = listAppts.get(posAppt);
-            EndAppt endAppt = new EndAppt(selectedAppt);
+            EndAppt endAppt = new EndAppt(this, selectedAppt);
             endAppt.setVisible(true);
-            refreshTable();
         }
     }//GEN-LAST:event_bttnEndApptActionPerformed
 
@@ -138,7 +142,7 @@ public class Home extends javax.swing.JFrame implements DisplayPopups {
         refreshTable();
     }
 
-    private void refreshTable() {
+    public void refreshTable() {
         if (!listAppts.isEmpty()) {
             Appt appt;
             tableModel = new DefaultTableModel(tblColumns, 0);
@@ -207,7 +211,7 @@ public class Home extends javax.swing.JFrame implements DisplayPopups {
             }
         }
     }
-
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bttnDeleteAppt;
     private javax.swing.JButton bttnEndAppt;
