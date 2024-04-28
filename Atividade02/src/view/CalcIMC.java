@@ -46,14 +46,18 @@ public class CalcIMC extends javax.swing.JFrame implements ErrorDisplayable {
         inputPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         lblAltura.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
+        lblAltura.setLabelFor(tfHeight);
         lblAltura.setText("Altura (m):");
 
         lblPeso.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
+        lblPeso.setLabelFor(tfWeight);
         lblPeso.setText("Peso (kg):");
 
+        tfHeight.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
         tfHeight.setToolTipText("Digite a altura em metros.");
         tfHeight.setNextFocusableComponent(tfWeight);
 
+        tfWeight.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
         tfWeight.setToolTipText("Digite o peso em quilogramas.");
         tfWeight.setNextFocusableComponent(bttnCalc);
 
@@ -61,6 +65,7 @@ public class CalcIMC extends javax.swing.JFrame implements ErrorDisplayable {
         bttnCalc.setFont(new java.awt.Font("Inter", 1, 12)); // NOI18N
         bttnCalc.setForeground(new java.awt.Color(255, 255, 255));
         bttnCalc.setText("Calcular");
+        bttnCalc.setToolTipText("Clique ou aperte a tecla Enter no teclado para calcular.");
         bttnCalc.setNextFocusableComponent(bttnLimpar);
         bttnCalc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -69,7 +74,7 @@ public class CalcIMC extends javax.swing.JFrame implements ErrorDisplayable {
         });
 
         bttnLimpar.setText("Limpar");
-        bttnLimpar.setToolTipText("Limpar todos os campos.");
+        bttnLimpar.setToolTipText("Clique para limpar todos os campos.");
         bttnLimpar.setNextFocusableComponent(bttnVoltar);
         bttnLimpar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

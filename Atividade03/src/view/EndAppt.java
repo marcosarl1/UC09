@@ -37,6 +37,7 @@ public class EndAppt extends javax.swing.JFrame implements DisplayPopups {
         textPrescription.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
         textPrescription.setForeground(new java.awt.Color(0, 0, 0));
         textPrescription.setRows(5);
+        textPrescription.setToolTipText("Receitas e observações.");
         textPrescription.setPreferredSize(new java.awt.Dimension(235, 86));
         scrollPaneText.setViewportView(textPrescription);
 
@@ -44,7 +45,7 @@ public class EndAppt extends javax.swing.JFrame implements DisplayPopups {
         bttnEnd.setFont(new java.awt.Font("Inter", 1, 14)); // NOI18N
         bttnEnd.setForeground(new java.awt.Color(255, 255, 255));
         bttnEnd.setText("Finalizar");
-        bttnEnd.setToolTipText("Selecione para finalizar a consulta.");
+        bttnEnd.setToolTipText("Clique ou aperte a tecla Enter no teclado para finalizar a consulta.");
         bttnEnd.setVisible(false);
         if (!selectedAppt.getApptDone()){
             bttnEnd.setVisible(true);
@@ -73,6 +74,7 @@ public class EndAppt extends javax.swing.JFrame implements DisplayPopups {
         });
 
         lblPrescription.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
+        lblPrescription.setLabelFor(textPrescription);
         lblPrescription.setText("Receita e observações:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

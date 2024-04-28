@@ -297,7 +297,7 @@
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Salvar"/>
-            <Property name="toolTipText" type="java.lang.String" value="Clique para salvar ou aperte a tecla Enter no teclado."/>
+            <Property name="toolTipText" type="java.lang.String" value="Clique ou aperte a tecla Enter no teclado para salvar novo registro."/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bttnSaveActionPerformed"/>

@@ -127,6 +127,9 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Inter" size="12" style="0"/>
             </Property>
+            <Property name="labelFor" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
+              <ComponentRef name="textName"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Nome do(a) Paciente:"/>
           </Properties>
         </Component>
@@ -143,6 +146,9 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Inter" size="12" style="0"/>
             </Property>
+            <Property name="labelFor" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
+              <ComponentRef name="textTel"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Telefone:"/>
           </Properties>
         </Component>
@@ -156,6 +162,9 @@
         </Component>
         <Component class="javax.swing.JLabel" name="lblCPF">
           <Properties>
+            <Property name="labelFor" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
+              <ComponentRef name="textCPF"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="CPF:"/>
           </Properties>
         </Component>
@@ -169,6 +178,9 @@
         </Component>
         <Component class="javax.swing.JLabel" name="lblDate">
           <Properties>
+            <Property name="labelFor" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
+              <ComponentRef name="textDate"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Data da Consulta:"/>
           </Properties>
         </Component>
@@ -201,7 +213,7 @@
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Cadastrar"/>
-            <Property name="toolTipText" type="java.lang.String" value="Selecione para cadastrar nova consulta."/>
+            <Property name="toolTipText" type="java.lang.String" value="Clique ou aperte a tecla Enter no teclado para cadastrar nova consulta."/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bttnCadastrarActionPerformed"/>

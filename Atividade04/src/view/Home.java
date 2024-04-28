@@ -110,7 +110,7 @@ public class Home extends javax.swing.JFrame {
         bttnSave.setFont(new java.awt.Font("Inter", 1, 20)); // NOI18N
         bttnSave.setForeground(new java.awt.Color(255, 255, 255));
         bttnSave.setText("Salvar");
-        bttnSave.setToolTipText("Clique para salvar ou aperte a tecla Enter no teclado.");
+        bttnSave.setToolTipText("Clique ou aperte a tecla Enter no teclado para salvar novo registro.");
         bttnSave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bttnSaveActionPerformed(evt);
@@ -289,6 +289,14 @@ public class Home extends javax.swing.JFrame {
         saveData(dataString, horaString, sistolicaString, diastolicaString);
     }
 
+    private void clearFields() {
+        txtData.setText("");
+        txtHora.setText("");
+        txtSistolica.setText("");
+        txtDiastolica.setText("");
+        bttnsYN.clearSelection(); 
+    }
+
     private void saveData(String dataString, String horaString, String sistolicaString, String diastolicaString) {
         LocalDate data = LocalDate.parse(dataString, FORMATTER);
         LocalTime hora = LocalTime.parse(horaString);
@@ -308,6 +316,7 @@ public class Home extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Dados registrados com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
 
             readData();
+            clearFields();
         } catch (IOException e) {
             JOptionPane.showMessageDialog(null, "Erro ao registrar dados.", "Erro", JOptionPane.ERROR_MESSAGE);
         }

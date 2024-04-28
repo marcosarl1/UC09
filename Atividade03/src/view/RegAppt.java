@@ -40,22 +40,26 @@ public class RegAppt extends javax.swing.JFrame implements DisplayPopups {
         lblTitle.setText("Cadastrar Consulta");
 
         lblName.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
+        lblName.setLabelFor(textName);
         lblName.setText("Nome do(a) Paciente:");
 
         textName.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
         textName.setToolTipText("Insira o nome do paciente.");
 
         lblTel.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
+        lblTel.setLabelFor(textTel);
         lblTel.setText("Telefone:");
 
         textTel.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
         textTel.setToolTipText("Insira o número de telefone do paciente.");
 
+        lblCPF.setLabelFor(textCPF);
         lblCPF.setText("CPF:");
 
         textCPF.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
         textCPF.setToolTipText("Insira o CPF do paciente.");
 
+        lblDate.setLabelFor(textDate);
         lblDate.setText("Data da Consulta:");
 
         textDate.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
@@ -69,7 +73,7 @@ public class RegAppt extends javax.swing.JFrame implements DisplayPopups {
         bttnCadastrar.setFont(new java.awt.Font("Inter", 1, 14)); // NOI18N
         bttnCadastrar.setForeground(new java.awt.Color(255, 255, 255));
         bttnCadastrar.setText("Cadastrar");
-        bttnCadastrar.setToolTipText("Selecione para cadastrar nova consulta.");
+        bttnCadastrar.setToolTipText("Clique ou aperte a tecla Enter no teclado para cadastrar nova consulta.");
         bttnCadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bttnCadastrarActionPerformed(evt);

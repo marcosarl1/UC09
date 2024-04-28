@@ -40,6 +40,7 @@ public class CalcRec extends javax.swing.JFrame implements ErrorDisplayable {
         inputPanel.setPreferredSize(new java.awt.Dimension(310, 100));
 
         lblCal.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
+        lblCal.setLabelFor(tfCal);
         lblCal.setText("Calorias diárias (kcal):");
 
         tfCal.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
@@ -49,6 +50,7 @@ public class CalcRec extends javax.swing.JFrame implements ErrorDisplayable {
         bttnCalc.setFont(new java.awt.Font("Inter", 1, 12)); // NOI18N
         bttnCalc.setForeground(new java.awt.Color(255, 255, 255));
         bttnCalc.setText("Calcular");
+        bttnCalc.setToolTipText("Clique ou aperte a tecla Enter no teclado para Calcular.");
         bttnCalc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bttnCalcActionPerformed(evt);
@@ -57,7 +59,7 @@ public class CalcRec extends javax.swing.JFrame implements ErrorDisplayable {
 
         bttnLimpar.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
         bttnLimpar.setText("Limpar");
-        bttnLimpar.setToolTipText("Limpar todos os campos.");
+        bttnLimpar.setToolTipText("Clique para limpar todos os campos.");
         bttnLimpar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bttnLimparActionPerformed(evt);

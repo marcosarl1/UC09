@@ -22,7 +22,7 @@ public class CalcGC extends javax.swing.JFrame implements ErrorDisplayable {
         bttnsFM = new javax.swing.ButtonGroup();
         lblTitle = new javax.swing.JLabel();
         inputPanel = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
+        lblSexo = new javax.swing.JLabel();
         rbFemale = new javax.swing.JRadioButton();
         rbMale = new javax.swing.JRadioButton();
         lblWeight = new javax.swing.JLabel();
@@ -51,8 +51,9 @@ public class CalcGC extends javax.swing.JFrame implements ErrorDisplayable {
 
         inputPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jLabel2.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
-        jLabel2.setText("Sexo:");
+        lblSexo.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
+        lblSexo.setLabelFor(rbFemale);
+        lblSexo.setText("Sexo:");
 
         bttnsFM.add(rbFemale);
         rbFemale.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
@@ -67,24 +68,31 @@ public class CalcGC extends javax.swing.JFrame implements ErrorDisplayable {
         rbMale.setNextFocusableComponent(tfWeight);
 
         lblWeight.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
+        lblWeight.setLabelFor(tfWeight);
         lblWeight.setText("Peso (kg):");
 
+        tfWeight.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
         tfWeight.setToolTipText("Digite o peso em quilogramas.");
         tfWeight.setNextFocusableComponent(tfHeight);
 
+        tfHeight.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
         tfHeight.setToolTipText("Digite a altura em centímetros.");
         tfHeight.setNextFocusableComponent(tfAge);
 
         lblHeight.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
+        lblHeight.setLabelFor(tfHeight);
         lblHeight.setText("Altura (cm):");
 
         lblAge.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
+        lblAge.setLabelFor(tfAge);
         lblAge.setText("Idade:");
 
+        tfAge.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
         tfAge.setToolTipText("Digite a idade em anos.");
         tfAge.setNextFocusableComponent(cbActivity);
 
         lblActivity.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
+        lblActivity.setLabelFor(cbActivity);
         lblActivity.setText("Nível de Atividade:");
 
         cbActivity.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
@@ -96,7 +104,7 @@ public class CalcGC extends javax.swing.JFrame implements ErrorDisplayable {
         bttnCalc.setFont(new java.awt.Font("Inter", 1, 12)); // NOI18N
         bttnCalc.setForeground(new java.awt.Color(255, 255, 255));
         bttnCalc.setText("Calcular");
-        bttnCalc.setToolTipText("Calcular.");
+        bttnCalc.setToolTipText("Clique ou aperte a tecla Enter no teclado para calcular.");
         bttnCalc.setNextFocusableComponent(bttnLimpar);
         bttnCalc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -104,8 +112,9 @@ public class CalcGC extends javax.swing.JFrame implements ErrorDisplayable {
             }
         });
 
+        bttnLimpar.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
         bttnLimpar.setText("Limpar");
-        bttnLimpar.setToolTipText("Limpar todos os campos.");
+        bttnLimpar.setToolTipText("Clique para limpar todos os campos.");
         bttnLimpar.setNextFocusableComponent(bttnVoltar);
         bttnLimpar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -126,7 +135,7 @@ public class CalcGC extends javax.swing.JFrame implements ErrorDisplayable {
                                 .addComponent(rbFemale, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(rbMale, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblSexo, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(tfAge, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(inputPanelLayout.createSequentialGroup()
                                 .addGap(3, 3, 3)
@@ -161,7 +170,7 @@ public class CalcGC extends javax.swing.JFrame implements ErrorDisplayable {
             inputPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(inputPanelLayout.createSequentialGroup()
                 .addGap(10, 10, 10)
-                .addComponent(jLabel2)
+                .addComponent(lblSexo)
                 .addGap(3, 3, 3)
                 .addGroup(inputPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(rbFemale)
@@ -321,12 +330,12 @@ public class CalcGC extends javax.swing.JFrame implements ErrorDisplayable {
     private javax.swing.JComboBox<String> cbActivity;
     private javax.swing.Box.Filler filler1;
     private javax.swing.JPanel inputPanel;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel lblActivity;
     private javax.swing.JLabel lblAge;
     private javax.swing.JLabel lblGastoBasal;
     private javax.swing.JLabel lblGastoTotal;
     private javax.swing.JLabel lblHeight;
+    private javax.swing.JLabel lblSexo;
     private javax.swing.JLabel lblTitle;
     private javax.swing.JLabel lblWeight;
     private javax.swing.JRadioButton rbFemale;

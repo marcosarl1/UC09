@@ -34,6 +34,7 @@ public class Home extends javax.swing.JFrame implements DisplayPopups {
         setResizable(false);
 
         lblTitle.setFont(new java.awt.Font("Inter", 1, 24)); // NOI18N
+        lblTitle.setLabelFor(this);
         lblTitle.setText("Boas vindas ao sistema de agendamento");
 
         bttnNewAppt.setBackground(new java.awt.Color(0, 122, 255));
