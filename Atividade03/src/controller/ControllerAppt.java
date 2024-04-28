@@ -34,7 +34,7 @@ public class ControllerAppt {
             regAppt.displaySuccess("Consulta adicionada com sucesso!");
             clearInputs(regAppt);
         } catch (DateTimeParseException e) {
-            regAppt.displayError("Data inválida. Formato esperado: dd/MM/yyyy");
+            regAppt.displayError("Data inválida. Formato esperado: dd/MM/aaaa");
         } catch(IllegalArgumentException e) {
             regAppt.displayError(e.getMessage());
         }
