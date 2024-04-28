@@ -7,17 +7,22 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import net.miginfocom.swing.MigLayout;
-
-import controller.SaleController;
 import java.awt.Color;
 
-public class SaleCalculator extends JPanel {
+import controller.SaleController;
+import javax.swing.JFrame;
+
+public class SaleCalculator extends JFrame {
 
     private JTextField valueField;
     private JButton bttnCalc;
 
     public SaleCalculator() {
         init();
+        setTitle("Calculadora de Venda");
+        setSize(300,300);
+        setLocationRelativeTo(null);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
 
     public JTextField getValueField() {
