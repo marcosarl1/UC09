@@ -78,7 +78,6 @@
       <SubComponents>
         <Component class="javax.swing.JTextArea" name="textPrescription">
           <Properties>
-            <Property name="editable" type="boolean" value="false"/>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
@@ -110,6 +109,12 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Finalizar"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bttnEndActionPerformed"/>
+      </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="bttnEnd.setVisible(false);&#xa;if (!selectedAppt.getApptDone()){&#xa;    bttnEnd.setVisible(true);&#xa;}"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JLabel" name="lblTitle">
       <Properties>

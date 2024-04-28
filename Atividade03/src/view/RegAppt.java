@@ -3,10 +3,14 @@ package view;
 import javax.swing.JCheckBox;
 import javax.swing.JTextField;
 
+import controller.ControllerAppt;
 
-public class RegAppt extends javax.swing.JFrame implements ErrorDisplay{
+public class RegAppt extends javax.swing.JFrame implements DisplayPopups{
 
-    public RegAppt() {
+    private final Home home;
+
+    public RegAppt(Home home) {
+        this.home = home;
         initComponents();
         setLocationRelativeTo(null);
     }
@@ -25,11 +29,10 @@ public class RegAppt extends javax.swing.JFrame implements ErrorDisplay{
         textCPF = new javax.swing.JTextField();
         lblDate = new javax.swing.JLabel();
         textDate = new javax.swing.JTextField();
-        chkIsPacient = new javax.swing.JCheckBox();
-        bttnCalc = new javax.swing.JButton();
+        chkIsPatient = new javax.swing.JCheckBox();
+        bttnCadastrar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(400, 480));
         setResizable(false);
 
         lblTitle.setFont(new java.awt.Font("Inter", 1, 24)); // NOI18N
@@ -53,18 +56,23 @@ public class RegAppt extends javax.swing.JFrame implements ErrorDisplay{
 
         textDate.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
 
-        chkIsPacient.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
-        chkIsPacient.setText("Já é paciente?");
-        chkIsPacient.addActionListener(new java.awt.event.ActionListener() {
+        chkIsPatient.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
+        chkIsPatient.setText("Já é paciente?");
+        chkIsPatient.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chkIsPacientActionPerformed(evt);
+                chkIsPatientActionPerformed(evt);
             }
         });
 
-        bttnCalc.setBackground(new java.awt.Color(0, 122, 255));
-        bttnCalc.setFont(new java.awt.Font("Inter", 1, 14)); // NOI18N
-        bttnCalc.setForeground(new java.awt.Color(255, 255, 255));
-        bttnCalc.setText("Cadastrar");
+        bttnCadastrar.setBackground(new java.awt.Color(0, 122, 255));
+        bttnCadastrar.setFont(new java.awt.Font("Inter", 1, 14)); // NOI18N
+        bttnCadastrar.setForeground(new java.awt.Color(255, 255, 255));
+        bttnCadastrar.setText("Cadastrar");
+        bttnCadastrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bttnCadastrarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout InputPanelLayout = new javax.swing.GroupLayout(InputPanel);
         InputPanel.setLayout(InputPanelLayout);
@@ -82,16 +90,14 @@ public class RegAppt extends javax.swing.JFrame implements ErrorDisplay{
                             .addGroup(InputPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(lblName)
                                 .addComponent(lblTel)
-                                .addComponent(lblCPF)))
-                        .addGroup(InputPanelLayout.createSequentialGroup()
-                            .addGap(2, 2, 2)
-                            .addComponent(lblDate)))
+                                .addComponent(lblCPF)
+                                .addComponent(lblDate))))
                     .addGroup(InputPanelLayout.createSequentialGroup()
                         .addGap(2, 2, 2)
                         .addGroup(InputPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(textDate)
-                            .addComponent(chkIsPacient)
-                            .addComponent(bttnCalc, javax.swing.GroupLayout.DEFAULT_SIZE, 274, Short.MAX_VALUE))))
+                            .addComponent(chkIsPatient)
+                            .addComponent(bttnCadastrar, javax.swing.GroupLayout.DEFAULT_SIZE, 274, Short.MAX_VALUE))))
                 .addContainerGap(15, Short.MAX_VALUE))
         );
         InputPanelLayout.setVerticalGroup(
@@ -114,9 +120,9 @@ public class RegAppt extends javax.swing.JFrame implements ErrorDisplay{
                 .addGap(3, 3, 3)
                 .addComponent(textDate, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(chkIsPacient)
+                .addComponent(chkIsPatient)
                 .addGap(12, 12, 12)
-                .addComponent(bttnCalc, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(bttnCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -140,18 +146,24 @@ public class RegAppt extends javax.swing.JFrame implements ErrorDisplay{
                 .addComponent(lblTitle)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(InputPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(59, Short.MAX_VALUE))
+                .addContainerGap(9, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void chkIsPacientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkIsPacientActionPerformed
+    private void chkIsPatientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkIsPatientActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_chkIsPacientActionPerformed
+    }//GEN-LAST:event_chkIsPatientActionPerformed
 
-    public JCheckBox getChkIsPacient() {
-        return chkIsPacient;
+    private void bttnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttnCadastrarActionPerformed
+        ControllerAppt.registerAppt(home, this);
+    }//GEN-LAST:event_bttnCadastrarActionPerformed
+
+
+    
+    public JCheckBox getChkIsPatient() {
+        return chkIsPatient;
     }
 
     public JTextField getTextCPF() {
@@ -173,8 +185,8 @@ public class RegAppt extends javax.swing.JFrame implements ErrorDisplay{
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel InputPanel;
-    private javax.swing.JButton bttnCalc;
-    private javax.swing.JCheckBox chkIsPacient;
+    private javax.swing.JButton bttnCadastrar;
+    private javax.swing.JCheckBox chkIsPatient;
     private javax.swing.JLabel lblCPF;
     private javax.swing.JLabel lblDate;
     private javax.swing.JLabel lblName;

@@ -1,10 +1,17 @@
 package view;
 
-public class EndAppt extends javax.swing.JFrame implements ErrorDisplay{
+import javax.swing.JTextArea;
+import model.entities.Appt;
 
-    public EndAppt() {
+public class EndAppt extends javax.swing.JFrame implements DisplayPopups {
+
+    private final Appt selectedAppt;
+
+    public EndAppt(Appt appt) {
+        this.selectedAppt = appt;
         initComponents();
         setLocationRelativeTo(null);
+        updateDetails();
     }
 
     @SuppressWarnings("unchecked")
@@ -23,7 +30,6 @@ public class EndAppt extends javax.swing.JFrame implements ErrorDisplay{
         setPreferredSize(new java.awt.Dimension(350, 370));
         setResizable(false);
 
-        textPrescription.setEditable(false);
         textPrescription.setBackground(new java.awt.Color(255, 255, 255));
         textPrescription.setColumns(20);
         textPrescription.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
@@ -36,6 +42,15 @@ public class EndAppt extends javax.swing.JFrame implements ErrorDisplay{
         bttnEnd.setFont(new java.awt.Font("Inter", 1, 14)); // NOI18N
         bttnEnd.setForeground(new java.awt.Color(255, 255, 255));
         bttnEnd.setText("Finalizar");
+        bttnEnd.setVisible(false);
+        if (!selectedAppt.getApptDone()){
+            bttnEnd.setVisible(true);
+        }
+        bttnEnd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bttnEndActionPerformed(evt);
+            }
+        });
 
         lblTitle.setFont(new java.awt.Font("Inter", 1, 24)); // NOI18N
         lblTitle.setText("Detalhes da Consulta");
@@ -98,7 +113,43 @@ public class EndAppt extends javax.swing.JFrame implements ErrorDisplay{
         dispose();
     }//GEN-LAST:event_bttnCancelActionPerformed
 
+    private void bttnEndActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttnEndActionPerformed
+        finalizeAppt();
+    }//GEN-LAST:event_bttnEndActionPerformed
 
+    private void updateDetails() {
+        if (selectedAppt != null) {
+            textPrescription.setText(selectedAppt.getPrescription());
+            chkIsApptDone.setSelected(selectedAppt.getApptDone());
+            chkIsApptDone.setEnabled(!selectedAppt.getApptDone());
+            textPrescription.setEditable(!selectedAppt.getApptDone());
+            updateButtonsVisibility();
+        }
+    }
+    
+    private void updateButtonsVisibility(){
+        if (selectedAppt != null && !selectedAppt.getApptDone()){
+            bttnEnd.setVisible(true);
+            bttnCancel.setVisible(true);
+        } else {
+            bttnEnd.setVisible(false);
+            bttnCancel.setVisible(false);
+        }
+    }
+    
+    private void finalizeAppt(){
+        String prescriptionText = textPrescription.getText().trim();
+        if (!prescriptionText.isEmpty()) {
+            selectedAppt.setPrescription(prescriptionText);
+            selectedAppt.setApptDone(true);
+            displaySuccess("Consulta finalizada com sucesso!");
+            dispose();
+        } else {
+            displayError("Preencha o campo de receita e observações.");
+        }  
+    }
+
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bttnCancel;
     private javax.swing.JButton bttnEnd;
